@@ -1,0 +1,19 @@
+﻿@model MovieApplicationDb.Models.ClientMovie
+@{
+    ViewBag.Title = "InsertNewClient";
+}
+
+<h2>Insert new client for the movie: @Model.movie.Name</h2>
+
+@using (Html.BeginForm("InsertNewClient", "Movies"))
+           {
+                <div class="form-group">
+                    @Html.DropDownListFor(m => m.ClientId, new SelectList(Model.clients, "Id", "Name"), new { @class = "form-control" })
+                </div>
+                @Html.HiddenFor(m => m.MovieId)
+
+                <div class="form-group">
+                <button type="submit" class="btn btn-primary">Add client to movie</button>
+                </div>
+            }
+
